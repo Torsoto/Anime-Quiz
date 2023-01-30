@@ -9,5 +9,43 @@
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
   </head>
-  <body></body>
+  <body>
+    <header class="topDiv">
+      <div class="topDivElement">
+        <img
+          id="audioImg"
+          src="/images/audioOFF.png"
+          alt="Audio ON/OFF Display"
+          title="Turns Audio ON/OFF"
+          onclick="audioFunction()"
+        />
+        <h1>Welcome to Anime-Quiz</h1>
+        <div class="profileBox">
+          <a
+            href="https://github.com/Torsoto"
+            title="GitHub-Profile of Torsoto"
+            target="_blank"
+          >
+            <img
+              id="profilePic"
+              src="/images/LUFFYNR1.jpg"
+              alt="Picture of Luffy from OP and anchor to my Github-Profile"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
+    <hr />
+    <div class="mainDiv">
+      <img
+        id="Img"
+        src="/images/LocationImgs/1.jpg"
+        alt="Image of a random Location in an Anime"
+      />
+      <form>
+        <label for="location">Guess Location: </label><br />
+        <input type="text" name="location" id="location" />
+      </form>
+    </div>
+  </body>
 </html>

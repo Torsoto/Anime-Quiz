@@ -10,16 +10,31 @@
     <script src="app.js"></script>
   </head>
   <body>
-    <div class="topDiv">
-      <img
-        id="audioImg"
-        src="/images/audioON.png"
-        alt="Audio ON/OFF Display"
-        title="Turns Audio ON/OFF"
-        onclick="audioFunction()"
-      />
-      <h1>Welcome to Anime-Quiz</h1>
-    </div>
+    <header class="topDiv">
+      <div class="topDivElement">
+        <img
+          id="audioImg"
+          src="/images/audioOFF.png"
+          alt="Audio ON/OFF Display"
+          title="Turns Audio ON/OFF"
+          onclick="audioFunction()"
+        />
+        <h1>Welcome to Anime-Quiz</h1>
+        <div class="profileBox">
+          <a
+            href="https://github.com/Torsoto"
+            title="GitHub-Profile of Torsoto"
+            target="_blank"
+          >
+            <img
+              id="profilePic"
+              src="/images/LUFFYNR1.jpg"
+              alt="Picture of Luffy from OP and anchor to my Github-Profile"
+            />
+          </a>
+        </div>
+      </div>
+    </header>
     <hr />
     <div class="instructions-box-Outer">
       <div class="instructions-box-Inner">
@@ -43,25 +58,28 @@
         <br />
         <div class="buttonDiv">
           <a href="video.html">
-            <button id="Opening-button" class="glow-on-hover" type="button">
-              Openings/Endings
+            <button id="Opening-button" class="button" type="button">
+              OPs/EDs
             </button></a
           >
-          <a href="location.html">
-            <button id="Location-button" class="glow-on-hover" type="button">
-              Location
-            </button></a
-          >
-        </div>
-        <p id="HF">Have FUN!</p>
-        <div id="Emoji">
           <img
+            id="Emoji"
             class="rotate"
             src="/images/Happy-Emoji-PNG.png"
             alt="rotating Happy-Emoji"
             height="125"
             width="125"
           />
+          <a href="location.html">
+            <button
+              id="Location-button"
+              class="button"
+              type="button"
+              onclick="getImages()"
+            >
+              Location
+            </button></a
+          >
         </div>
       </div>
     </div>
