@@ -13,7 +13,7 @@ body {
 h1 {
   font-size: 55px;
   font-weight: bold;
-  text-align: center;
+  padding-left: 31.5%;
 }
 
 h2 {
@@ -22,17 +22,22 @@ h2 {
   text-align: center;
 }
 
-div {
-  height: 100%;
-  position: relative;
+.buttonDiv {
+  display: flex;
+  justify-content: space-between;
 }
 
-.instructions-box {
+.instructions-box-Outer {
   margin: auto;
+  height: 50%;
   width: 50%;
+}
+
+.instructions-box-Inner {
+  display: grid;
   padding: 20px;
 
-  border: 0px solid black;
+  border: 0px solid rgb(0, 0, 0);
 }
 
 button {
@@ -60,15 +65,33 @@ button:hover {
 }
 
 #Emoji {
-  margin-top: 25px;
-  margin-left: 42%;
+  padding-top: 20px;
+  margin: auto;
 }
 #Location-button {
-  margin-left: 180px;
+  margin-right: 10%;
 }
 
 #Opening-button {
-  margin-left: 150px;
+  margin-left: 10%;
+}
+
+#audioImg {
+  cursor: pointer;
+  margin-top: 7px;
+  height: 50px;
+  width: 50px;
+}
+
+#musicDiv {
+  border: 5px;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+}
+
+.topDiv {
+  display: flex;
 }
 
 .rotate {

@@ -5,40 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anime-Quiz</title>
+    <link rel="short icon" type="images/png" href="images/favicon.png" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
   </head>
   <body>
-    <h1>Welcome to Anime-Quiz</h1>
-    <hr />
-    <div class="instructions-box">
-      <h2>Instructions:</h2>
-      <hr />
-      <p id="instruction-p">
-        This is a Website created by
-        <a href="https://github.com/Torsoto"><u>Torsoto</u></a>
-        where you can play two different types of an Anime-Quiz. either guess
-        the anime by the Opening/Ending or by the randomly picked Location.
-        <br />
-        <br />
-        Click on the type you want to Play :)
-      </p>
-      <br />
-      <button id="Opening-button" class="glow-on-hover" type="button">
-        Openings/Endings
-      </button>
-      <button id="Location-button" class="glow-on-hover" type="button">
-        Location
-      </button>
-      <p id="HF">Have FUN!</p>
+    <div class="topDiv">
       <img
-        id="Emoji"
-        class="rotate"
-        src="/images/Happy-Emoji-PNG.png"
-        alt="Happy-Emoji-PNG"
-        width="150px"
-        height="150px"
+        id="audioImg"
+        src="/images/audioON.png"
+        alt="Audio ON/OFF Display"
+        title="Turns Audio ON/OFF"
+        onclick="audioFunction()"
       />
+      <h1>Welcome to Anime-Quiz</h1>
+    </div>
+    <hr />
+    <div class="instructions-box-Outer">
+      <div class="instructions-box-Inner">
+        <h2>Instructions:</h2>
+        <hr />
+        <p id="instruction-p">
+          This is a Website created by
+          <a
+            href="https://github.com/Torsoto"
+            target="_blank"
+            title="Torsoto GitHub Profile"
+            ><u>Torsoto</u></a
+          >
+          where you can play two different types of an Anime-Quiz. <br />
+          You either guess the anime by the Opening/Ending or by the randomly
+          picked Location.
+          <br />
+          <br />
+          Click on the type you want to Play :)
+        </p>
+        <br />
+        <div class="buttonDiv">
+          <a href="video.html">
+            <button id="Opening-button" class="glow-on-hover" type="button">
+              Openings/Endings
+            </button></a
+          >
+          <a href="location.html">
+            <button id="Location-button" class="glow-on-hover" type="button">
+              Location
+            </button></a
+          >
+        </div>
+        <p id="HF">Have FUN!</p>
+        <div id="Emoji">
+          <img
+            class="rotate"
+            src="/images/Happy-Emoji-PNG.png"
+            alt="rotating Happy-Emoji"
+            height="125"
+            width="125"
+          />
+        </div>
+      </div>
     </div>
   </body>
 </html>
