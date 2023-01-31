@@ -51,11 +51,17 @@ h2 {
 }
 
 .buttonDiv {
-  display: flex;
-  justify-content: space-evenly;
+  justify-self: center;
   margin-top: 50px;
-  font-size: 25px;
   border-radius: 5px;
+  align-self: center;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.buttonDivMain {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -73,12 +79,25 @@ h2 {
 .mainDiv {
   display: grid;
   margin: auto;
-  grid-template-columns: 1fr;
 }
 
 form {
   margin-top: 1rem;
   text-align: center;
+  visibility: hidden;
+}
+
+.counter {
+  font-size: 100px;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  justify-self: center;
+  visibility: hidden;
+}
+
+#startBtn {
+  font-size: 35px;
 }
 
 #location {
@@ -86,8 +105,13 @@ form {
 }
 
 #Img {
+  grid-row: 1;
+  grid-column: 1;
   margin-top: 2rem;
   justify-self: center;
+  height: 500px;
+  width: 900px;
+  visibility: hidden;
 }
 
 #instruction-p {
@@ -106,13 +130,13 @@ form {
 }
 #Location-button {
   margin-right: 100px;
-  font-size: 22px;
+  font-size: 30px;
   cursor: pointer;
 }
 
 #Opening-button {
   margin-left: 100px;
-  font-size: 22px;
+  font-size: 30px;
   cursor: pointer;
 }
 

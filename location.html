@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
   </head>
-  <body>
+  <!-- onload="audioLoc.play()" add to body attribute -->
+  <body onload="audioLoc.play()">
     <header class="topDiv">
       <div class="topDivElement">
         <img
           id="audioImg"
-          src="/images/audioOFF.png"
+          src="/images/audioON.png"
           alt="Audio ON/OFF Display"
           title="Turns Audio ON/OFF"
           onclick="audioFunction()"
@@ -37,13 +38,17 @@
     </header>
     <hr />
     <div class="mainDiv">
+      <div class="counter">3</div>
       <img
         id="Img"
-        src="/images/LocationImgs/1.jpg"
+        src="/images/LocationImgs/10.jpg"
         alt="Image of a random Location in an Anime"
       />
+      <div class="buttonDiv">
+        <button id="startBtn" class="button" onclick="start()">START</button>
+      </div>
       <form>
-        <label for="location">Guess Location: </label><br />
+        <label for="location">Guess The Location: </label><br />
         <input type="text" name="location" id="location" />
       </form>
     </div>

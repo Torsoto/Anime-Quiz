@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
   </head>
-  <body>
+  <body onload="audioMain.play()">
     <header class="topDiv">
       <div class="topDivElement">
         <img
           id="audioImg"
-          src="/images/audioOFF.png"
+          src="/images/audioON.png"
           alt="Audio ON/OFF Display"
           title="Turns Audio ON/OFF"
           onclick="audioFunction()"
@@ -48,15 +48,15 @@
             title="Torsoto GitHub Profile"
             ><u>Torsoto</u></a
           >
-          where you can play two different types of an Anime-Quiz. <br />
-          You either guess the anime by the Opening/Ending or by the randomly
-          picked Location.
+          where you can play two different Anime-Quizes. <br />
+          <br />
+          You either guess the anime by the Opening/Ending or by Location.
           <br />
           <br />
-          Click on the type you want to Play :)
+          Enjoy :)
         </p>
         <br />
-        <div class="buttonDiv">
+        <div class="buttonDivMain">
           <a href="video.html">
             <button id="Opening-button" class="button" type="button">
               OPs/EDs
@@ -75,7 +75,7 @@
               id="Location-button"
               class="button"
               type="button"
-              onclick="getImages()"
+              onclick="changeImage()"
             >
               Location
             </button></a
