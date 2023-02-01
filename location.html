@@ -10,15 +10,15 @@
     <script src="app.js"></script>
   </head>
   <!-- onload="audioLoc.play()" add to body attribute -->
-  <body onload="audioLoc.play()">
+  <body>
     <header class="topDiv">
       <div class="topDivElement">
         <img
-          id="audioImg"
-          src="/images/audioON.png"
+          id="audioImgLoc"
+          src="/images/audioOFF.png"
           alt="Audio ON/OFF Display"
           title="Turns Audio ON/OFF"
-          onclick="audioFunction()"
+          onclick="audioFunctionLoc()"
         />
         <h1>Welcome to Anime-Quiz</h1>
         <div class="profileBox">
@@ -38,10 +38,21 @@
     </header>
     <hr />
     <div class="mainDiv">
+      <div class="timer" data-style="smooth" style="--duration: 15">
+        <div></div>
+      </div>
+      <a href="index.html" class="homeBtn">
+        <img
+          id="homeBtn"
+          src="/images/homeBtn.png"
+          alt="Back to Main-Page button"
+          title="Main-Page"
+          onclick="mainPage"
+      /></a>
       <div class="counter">3</div>
       <img
         id="Img"
-        src="/images/LocationImgs/10.jpg"
+        src="/images/LocationImgs/1.jpg"
         alt="Image of a random Location in an Anime"
       />
       <div class="buttonDiv">
@@ -49,7 +60,7 @@
       </div>
       <form>
         <label for="location">Guess The Location: </label><br />
-        <input type="text" name="location" id="location" />
+        <input id="location" type="text" name="location" />
       </form>
     </div>
   </body>

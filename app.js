@@ -4,9 +4,7 @@ var fileName = location.href.split("/").slice(-1);
 
 //Audio attributes
 audioLoc.volume = 0.05;
-audioMain.volume = 0.1;
-audioLoc.loop = true;
-audioMain.loop = true;
+audioMain.volume = 0.05;
 
 var imageElement = document.getElementById("Img");
 
@@ -48,6 +46,30 @@ const imageArray = [
   "/images/LocationImgs/25.jpg",
 ];
 
+const answerArray = [
+  ["Vinland Saga"],
+  ["One Piece", "OP"],
+  ["One Piece", "OP"],
+  ["Hxh", "Hunter x Hunter"],
+  ["Hxh", "Hunter x Hunter"],
+];
+
+document.addEventListener("DOMContentLoaded", function () {
+  let currentIndex = 0;
+  const locationInput = document.getElementById("location");
+
+  locationInput.addEventListener("keyup", function () {
+    const userAnswer = document.getElementById("location").value;
+    const correctAnswer = answerArray[currentIndex];
+    if (userAnswer === correctAnswer) {
+      currentIndex = currentIndex + 1;
+      window.alert("NICE");
+      changeImage();
+      resetTimer();
+    }
+  });
+});
+
 let usedIndexes = [];
 
 function changeImage() {
@@ -64,34 +86,36 @@ function changeImage() {
   usedIndexes.push(randomIndex);
 
   // Set the src attribute of the image element to the path at the randomly generated index
-  document.getElementById("Img").src = imageArray[randomIndex];
+  document.getElementById("Img").src = imageArray[1];
   imageElement.style.visibility = "hidden";
 }
 
-function audioFunction() {
-  //Stops or Plays audio depending on which html you are on
-  if (fileName == "index.html") {
-    if (!audioMain.paused) {
-      audioMain.pause();
-      document.getElementById("audioImg").src = "/images/audioOFF.png";
-    } else {
-      document.getElementById("audioImg").src = "/images/audioON.png";
-      audioMain.volume = 0.1;
-      audioMain.play();
-    }
-  } else if (fileName == "location.html") {
-    if (!audioLoc.paused) {
-      audioLoc.pause();
-      document.getElementById("audioImg").src = "/images/audioOFF.png";
-    } else {
-      document.getElementById("audioImg").src = "/images/audioON.png";
-      audioLoc.volume = 0.05;
-      audioLoc.play();
-    }
+function audioFunctionMain() {
+  if (!audioMain.paused) {
+    audioMain.pause();
+    document.getElementById("audioImg").src = "/images/audioOFF.png";
+  } else {
+    document.getElementById("audioImg").src = "/images/audioON.png";
+    audioMain.volume = 0.1;
+    audioMain.play();
+    audioLoc.loop = true;
+  }
+}
+
+function audioFunctionLoc() {
+  if (!audioLoc.paused) {
+    audioLoc.pause();
+    document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
+  } else {
+    document.getElementById("audioImgLoc").src = "/images/audioON.png";
+    audioLoc.volume = 0.05;
+    audioLoc.play();
+    audioLoc.loop = true;
   }
 }
 
 function start() {
+  const timerElement = document.querySelector(".timer");
   const counter = document.querySelector(".counter");
   document.getElementById("startBtn").style.display = "none";
   counter.style.visibility = "visible";
@@ -104,6 +128,25 @@ function start() {
       clearInterval(intervalId);
       document.getElementById("Img").style.visibility = "visible";
       document.querySelector("form").style.visibility = "visible";
+      audioLoc.play();
+      audioLoc.loop = true;
+      document.getElementById("audioImgLoc").src = "/images/audioON.png";
+      timerElement.style.visibility = "visible";
+      startTimer();
+      //changeImage();
     }
   }, 1000);
+}
+
+function startTimer() {
+  const timerElement = document.querySelector(".timer");
+  timerElement.classList.add("start");
+}
+
+function resetTimer() {
+  const timerElement = document.querySelector(".timer");
+  timerElement.classList.remove("start");
+  setTimeout(() => {
+    timerElement.classList.add("start");
+  }, 0);
 }
