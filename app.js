@@ -1,9 +1,11 @@
-var audioMain = new Audio("/sound/Tenderness.mp3");
+const audioMain = new Audio("/sound/Tenderness.mp3");
 const audioLoc = new Audio("/sound/Four-Eyes Attacks.mp3");
 const audioCount = new Audio("/sound/Countdown.mp3");
+const audioDone = new Audio("/sound/HappyOpAudio.mp3");
 var fileName = location.href.split("/").slice(-1);
 
 //Audio attributes
+audioDone.volume = 0.1;
 audioLoc.volume = 0.05;
 audioMain.volume = 0.05;
 
@@ -75,12 +77,8 @@ const answerArray = [
   "GTO",
 ];
 
-const scoreDisplay = document.getElementsByClassName("score");
+const scoreDisplay = document.querySelector(".score");
 const skipBtn = document.getElementById("skipBtn");
-
-function skip() {
-  changeImage();
-}
 
 //** Checks the output of inputField and changes Img and adds Points accordingly
 document.addEventListener("DOMContentLoaded", function () {
@@ -102,8 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 600);
         scoreDisplay++;
         score.innerHTML = scoreDisplay + "/25 Points";
-        console.log(scoreDisplay);
-        console.log(score);
         score.style.visibility = "visible";
         changeImage();
         document.getElementById("location").value = "";
@@ -121,9 +117,22 @@ let usedIndexes = [];
 let randomIndex;
 
 function changeImage() {
+  const imageElement = document.getElementById("Img");
+  const skipBtn = document.getElementById("skipBtn");
+  const locationInput = document.getElementById("location");
+  const counter = document.querySelector(".counter");
+  const timerElement = document.querySelector(".timer");
+
   // Check if all the images have been used
   if (usedIndexes.length === imageArray.length) {
     usedIndexes = [];
+    imageElement.style.visibility = "hidden";
+    skipBtn.style.visibility = "hidden";
+    locationInput.style.visibility = "hidden";
+    counter.style.visibility = "hidden";
+    timerElement.style.visibility = "hidden";
+    audioLoc.pause();
+    audioDone.play();
   }
 
   do {
@@ -141,22 +150,27 @@ function audioFunctionMain() {
     document.getElementById("audioImg").src = "/images/audioOFF.png";
   } else {
     document.getElementById("audioImg").src = "/images/audioON.png";
-    audioMain.volume = 0.1;
+    audioMain.volume = 0.05;
     audioMain.play();
     audioLoc.loop = true;
   }
 }
 
 function audioFunctionLoc() {
-  if (!audioLoc.paused) {
+  if (!audioLoc.paused || !audioDone.paused) {
     audioLoc.pause();
+    audioDone.pause();
     document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
   } else {
     document.getElementById("audioImgLoc").src = "/images/audioON.png";
-    audioLoc.volume = 0.05;
+    audioLoc.volume = 0.03;
     audioLoc.play();
     audioLoc.loop = true;
   }
+}
+
+function skip() {
+  changeImage();
 }
 
 function start() {
@@ -202,6 +216,7 @@ function startTimer() {
     counter.style.visibility = "hidden";
     audioLoc.pause();
     document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
+    audioDone.play();
   }, duration * 1000);
 }
 
