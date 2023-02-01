@@ -1,12 +1,13 @@
 var audioMain = new Audio("/sound/Tenderness.mp3");
 const audioLoc = new Audio("/sound/Four-Eyes Attacks.mp3");
+const audioCount = new Audio("/sound/Countdown.mp3");
 var fileName = location.href.split("/").slice(-1);
 
 //Audio attributes
 audioLoc.volume = 0.05;
 audioMain.volume = 0.05;
 
-var imageElement = document.getElementById("Img");
+const imageElement = document.getElementById("Img");
 
 //!Currently not working ! (problem with png and jpg choose)
 /* 
@@ -47,30 +48,77 @@ const imageArray = [
 ];
 
 const answerArray = [
-  ["Vinland Saga"],
-  ["One Piece", "OP"],
-  ["One Piece", "OP"],
-  ["Hxh", "Hunter x Hunter"],
-  ["Hxh", "Hunter x Hunter"],
+  "Vinland Saga",
+  "One Piece",
+  "One Piece",
+  "HxH",
+  "HxH",
+  "Jojo",
+  "Ippo",
+  "Love is War",
+  "Code Geass",
+  "Ranking of Kings",
+  "Angel Beats",
+  "Black Clover",
+  "MHA",
+  "MHA",
+  "Death Note",
+  "Haikyuu",
+  "Demon Slayer",
+  "Made in Abyss",
+  "Mob Psycho",
+  "Monster",
+  "Naruto",
+  "Prison School",
+  "Saiki",
+  "Steins Gate",
+  "GTO",
 ];
 
-document.addEventListener("DOMContentLoaded", function () {
-  let currentIndex = 0;
-  const locationInput = document.getElementById("location");
+const scoreDisplay = document.getElementsByClassName("score");
+const skipBtn = document.getElementById("skipBtn");
 
-  locationInput.addEventListener("keyup", function () {
-    const userAnswer = document.getElementById("location").value;
-    const correctAnswer = answerArray[currentIndex];
-    if (userAnswer === correctAnswer) {
-      currentIndex = currentIndex + 1;
-      window.alert("NICE");
-      changeImage();
-      resetTimer();
+function skip() {
+  changeImage();
+}
+
+//** Checks the output of inputField and changes Img and adds Points accordingly
+document.addEventListener("DOMContentLoaded", function () {
+  const locationInput = document.getElementById("location");
+  const score = document.querySelector(".score");
+  const failMessage = document.querySelector(".fail");
+  const winMessage = document.querySelector(".win");
+
+  let scoreDisplay = parseInt(document.querySelector(".score").innerHTML);
+
+  locationInput.addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      const userAnswer = document.getElementById("location").value;
+      const correctAnswer = answerArray[randomIndex];
+      if (userAnswer.match(correctAnswer)) {
+        winMessage.style.visibility = "visible";
+        setTimeout(function () {
+          winMessage.style.visibility = "hidden";
+        }, 600);
+        scoreDisplay++;
+        score.innerHTML = scoreDisplay + "/25 Points";
+        console.log(scoreDisplay);
+        console.log(score);
+        score.style.visibility = "visible";
+        changeImage();
+        document.getElementById("location").value = "";
+      } else {
+        failMessage.style.visibility = "visible";
+        setTimeout(function () {
+          failMessage.style.visibility = "hidden";
+        }, 600);
+      }
     }
   });
 });
 
 let usedIndexes = [];
+let randomIndex;
 
 function changeImage() {
   // Check if all the images have been used
@@ -78,16 +126,13 @@ function changeImage() {
     usedIndexes = [];
   }
 
-  let randomIndex;
   do {
     randomIndex = Math.floor(Math.random() * imageArray.length);
   } while (usedIndexes.includes(randomIndex));
 
   usedIndexes.push(randomIndex);
-
   // Set the src attribute of the image element to the path at the randomly generated index
-  document.getElementById("Img").src = imageArray[1];
-  imageElement.style.visibility = "hidden";
+  document.getElementById("Img").src = imageArray[randomIndex];
 }
 
 function audioFunctionMain() {
@@ -117,10 +162,11 @@ function audioFunctionLoc() {
 function start() {
   const timerElement = document.querySelector(".timer");
   const counter = document.querySelector(".counter");
+  const skipBtn = document.getElementById("skipBtn");
   document.getElementById("startBtn").style.display = "none";
   counter.style.visibility = "visible";
   let count = parseInt(document.querySelector(".counter").innerHTML);
-
+  audioCount.play();
   const intervalId = setInterval(() => {
     count--;
     counter.innerHTML = count;
@@ -132,15 +178,31 @@ function start() {
       audioLoc.loop = true;
       document.getElementById("audioImgLoc").src = "/images/audioON.png";
       timerElement.style.visibility = "visible";
+      skipBtn.style.visibility = "visible";
       startTimer();
-      //changeImage();
+      changeImage();
     }
   }, 1000);
 }
 
 function startTimer() {
+  const imageElement = document.getElementById("Img");
+  const skipBtn = document.getElementById("skipBtn");
+  const locationInput = document.getElementById("location");
+  const counter = document.querySelector(".counter");
   const timerElement = document.querySelector(".timer");
+  const duration = parseInt(
+    getComputedStyle(timerElement).getPropertyValue("--duration")
+  );
   timerElement.classList.add("start");
+  setTimeout(function () {
+    imageElement.style.visibility = "hidden";
+    skipBtn.style.visibility = "hidden";
+    locationInput.style.visibility = "hidden";
+    counter.style.visibility = "hidden";
+    audioLoc.pause();
+    document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
+  }, duration * 1000);
 }
 
 function resetTimer() {

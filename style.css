@@ -79,18 +79,51 @@ h2 {
 .mainDiv {
   display: grid;
   margin: auto;
-  grid-template-rows: 565px 25px 70px;
+  grid-template-rows: 575px 50px;
+}
+
+.buttonDivSkip {
+  grid-column: 1;
+  grid-row: 3;
+  justify-self: center;
+}
+
+.inputDiv {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#skipBtn {
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 2px;
+  padding: 8px 10px;
+  outline: none;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 7px #19703d;
+  visibility: hidden;
+}
+
+#skipBtn:hover {
+  background-color: #2ecc71;
+}
+
+#skipBtn:active {
+  background-color: #2ecc71;
+  box-shadow: 0 5px #19703d;
+  transform: translateY(4px);
 }
 
 .timer {
-  height: 15px;
-  width: 900px;
+  height: 45px;
+  width: 100%;
   background: linear-gradient(to bottom, rgb(0, 255, 42), rgb(0, 73, 18));
-  border-radius: 10px;
   justify-self: center;
-  grid-row: 2;
-  margin-top: 2rem;
-  align-self: flex-end;
+  grid-row: 1;
+  grid-column: 1;
   transform-origin: left center;
   visibility: hidden;
 }
@@ -104,6 +137,37 @@ h2 {
     /* More performant than animating `width` */
     transform: scaleX(0);
   }
+}
+
+.fail {
+  font-size: 16px;
+  color: rgb(212, 0, 42);
+  justify-self: center;
+  grid-row: 2;
+  grid-column: 1;
+  margin-bottom: 47px;
+  align-self: center;
+  visibility: hidden;
+}
+
+.win {
+  font-size: 16px;
+  color: #2ecc71;
+  grid-column: 1;
+  grid-row: 2;
+  margin-bottom: 47px;
+  align-self: center;
+  justify-self: center;
+  visibility: hidden;
+}
+
+.score {
+  font-size: 70px;
+  justify-self: center;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: center;
+  visibility: hidden;
 }
 
 form {
@@ -151,8 +215,7 @@ form {
   grid-column: 1;
   height: 50px;
   width: 50px;
-  margin-right: 25px;
-  justify-self: center;
+  margin-top: 8px;
 }
 
 #instruction-p {
@@ -195,6 +258,10 @@ form {
   margin-left: 10px;
   height: 50px;
   width: 50px;
+  margin-left: 75px;
+  margin-top: 15px;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 #musicDiv {
@@ -238,7 +305,7 @@ form {
 }
 
 .button {
-  padding: 20px 20px;
+  padding: 15px 20px;
   outline: none;
   background-color: #27ae60;
   border: none;

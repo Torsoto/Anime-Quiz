@@ -9,10 +9,17 @@
     <link rel="stylesheet" href="style.css" />
     <script src="app.js"></script>
   </head>
-  <!-- onload="audioLoc.play()" add to body attribute -->
   <body>
     <header class="topDiv">
       <div class="topDivElement">
+        <a href="index.html" class="homeBtn">
+          <img
+            id="homeBtn"
+            src="/images/homeBtn.png"
+            alt="Back to Main-Page button"
+            title="Main-Page"
+            onclick="mainPage"
+        /></a>
         <img
           id="audioImgLoc"
           src="/images/audioOFF.png"
@@ -38,30 +45,28 @@
     </header>
     <hr />
     <div class="mainDiv">
-      <div class="timer" data-style="smooth" style="--duration: 15">
-        <div></div>
-      </div>
-      <a href="index.html" class="homeBtn">
-        <img
-          id="homeBtn"
-          src="/images/homeBtn.png"
-          alt="Back to Main-Page button"
-          title="Main-Page"
-          onclick="mainPage"
-      /></a>
+      <div class="timer" data-style="smooth" style="--duration: 120"></div>
       <div class="counter">3</div>
-      <img
-        id="Img"
-        src="/images/LocationImgs/1.jpg"
-        alt="Image of a random Location in an Anime"
-      />
+      <div class="score">0</div>
+      <div class="fail">Wrong!</div>
+      <div class="win">Good job!</div>
+      <img id="Img" src="" alt="Image of a random Location in an Anime" />
       <div class="buttonDiv">
         <button id="startBtn" class="button" onclick="start()">START</button>
       </div>
-      <form>
-        <label for="location">Guess The Location: </label><br />
-        <input id="location" type="text" name="location" />
-      </form>
+      <div class="buttonDivSkip">
+        <button id="skipBtn" onclick="skip()">SKIP</button>
+      </div>
+      <div class="inputDiv">
+        <form onsubmit="return false">
+          <input
+            placeholder="Type your guess here"
+            id="location"
+            type="text"
+            name="location"
+          />
+        </form>
+      </div>
     </div>
   </body>
 </html>
