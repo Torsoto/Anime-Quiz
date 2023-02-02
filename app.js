@@ -90,36 +90,41 @@ const hintArry = [
 
 const answerArray = [
   ["Vinland Saga", "Vinland"],
-  ["One Piece", "OP"],
-  ["One Piece", "OP"],
+  ["One Piece", "OP", "Peak"],
+  ["One Piece", "OP", "Peak"],
   ["HxH", "Hunter x Hunter", "HunterxHunter"],
   ["HxH", "Hunter x Hunter", "HunterxHunter"],
   ["Jojo", "JoJo's Bizarre Adventure", "Jojos", "Jojo's"],
   ["Ippo", "Hajime no Ippo"],
   ["Love is War", "Kaguya-sama", "Kaguya sama", "Kaguya"],
-  ["Code Geass", "Code"],
+  [
+    "Code Geass",
+    "Code",
+    "Code Geass: Lelouch of the Rebellion",
+    "Lelouch of the Rebellion",
+  ],
   ["Ranking of Kings", "Ousama Ranking"],
   ["Angel Beats"],
   ["Black Clover", "BC"],
   ["MHA", "My Hero Academia", "Buko no Hero Academia"],
   ["MHA", "My Hero Academia", "Buko no Hero Academia"],
   ["Death Note", "Death Note"],
-  ["Haikyuu", "Haikyu!!"],
-  ["Demon Slayer", "Kimetsu no Yaiba"],
-  ["Made in Abyss", "Made in Abyss"],
-  ["Mob Psycho", "Mob Psycho 100"],
+  ["Haikyu", "Haikyu!!", "Haikyuu"],
+  ["Demon Slayer", "Kimetsu no Yaiba", "DS"],
+  ["Made in Abyss"],
+  ["Mob Psycho", "Mob Psycho 100", "Mob"],
   ["Monster", "Monster"],
   ["Naruto", "Naruto Shippuden"],
   ["Prison School", "Prison School"],
   ["Saiki", "The Disastrous Life of Saiki K.", "Saiki K", "Saiki K."],
-  ["Steins Gate", "Steins;Gate", "Steinsgate"],
+  ["Steins Gate", "Steins;Gate", "Steinsgate", "Steins gate 0"],
   ["GTO", "Great Teacher Onizuka", "Onizuka"],
   ["Aot", "Attack on Titan"],
   ["Aot", "Attack on Titan"],
   ["Bleach"],
   ["Bleach"],
   ["FMAB", "Fullmetal Alchemist Brotherhood"],
-  ["Mob Psycho", "Mob Psycho 100"],
+  ["Mob Psycho", "Mob Psycho 100", "Mob"],
   ["Ippo", "Hajime no Ippo"],
   ["JJK", "Jujutsu Kaisen", "Mid"],
   ["OPM", "One Punch Man"],
@@ -195,7 +200,6 @@ function changeImage() {
   const hideBtn = document.getElementById("hintBtn");
   const hintText = document.querySelector(".hintText");
 
-  // Check if all the images have been used
   if (usedIndexes.length === imageArray.length) {
     usedIndexes = [];
     imageElement.style.visibility = "hidden";
@@ -216,6 +220,7 @@ function changeImage() {
   } while (usedIndexes.includes(randomIndex));
 
   usedIndexes.push(randomIndex);
+  console.log(usedIndexes);
   // Set the src attribute of the image element to the path at the randomly generated index
   document.getElementById("Img").src = imageArray[randomIndex];
 }
@@ -260,6 +265,9 @@ function audioFunctionLoc() {
 function skip() {
   changeImage();
   document.getElementById("hintBtn").style.visibility = "visible";
+  if (usedIndexes.length === 1) {
+    document.getElementById("hintBtn").style.visibility = "hidden";
+  }
   document.querySelector(".hintText").style.visibility = "hidden";
 }
 
