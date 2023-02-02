@@ -5,7 +5,7 @@ const audioDone = new Audio("/sound/HappyOpAudio.mp3");
 var fileName = location.href.split("/").slice(-1);
 
 //Audio attributes
-audioDone.volume = 0.1;
+audioDone.volume = 0.05;
 audioLoc.volume = 0.05;
 audioMain.volume = 0.05;
 
@@ -122,6 +122,7 @@ function changeImage() {
   const locationInput = document.getElementById("location");
   const counter = document.querySelector(".counter");
   const timerElement = document.querySelector(".timer");
+  const luffy = document.getElementById("luffy");
 
   // Check if all the images have been used
   if (usedIndexes.length === imageArray.length) {
@@ -131,6 +132,8 @@ function changeImage() {
     locationInput.style.visibility = "hidden";
     counter.style.visibility = "hidden";
     timerElement.style.visibility = "hidden";
+    luffy.style.visibility = "visible";
+
     audioLoc.pause();
     audioDone.play();
   }
@@ -152,7 +155,6 @@ function audioFunctionMain() {
     document.getElementById("audioImg").src = "/images/audioON.png";
     audioMain.volume = 0.05;
     audioMain.play();
-    audioLoc.loop = true;
   }
 }
 
@@ -163,9 +165,22 @@ function audioFunctionLoc() {
     document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
   } else {
     document.getElementById("audioImgLoc").src = "/images/audioON.png";
-    audioLoc.volume = 0.03;
-    audioLoc.play();
-    audioLoc.loop = true;
+    if (
+      window.getComputedStyle(document.getElementById("Img")).visibility ===
+        "hidden" &&
+      window.getComputedStyle(document.getElementById("startBtn"))
+        .visibility === "hidden" &&
+      window.getComputedStyle(document.querySelector(".counter")).visibility ===
+        "hidden"
+    ) {
+      audioDone.volume = 0.05;
+      audioDone.play();
+      audioDone.loop = true;
+    } else {
+      audioLoc.volume = 0.05;
+      audioLoc.play();
+      audioLoc.loop = true;
+    }
   }
 }
 
@@ -177,7 +192,7 @@ function start() {
   const timerElement = document.querySelector(".timer");
   const counter = document.querySelector(".counter");
   const skipBtn = document.getElementById("skipBtn");
-  document.getElementById("startBtn").style.display = "none";
+  document.getElementById("startBtn").style.visibility = "hidden";
   counter.style.visibility = "visible";
   let count = parseInt(document.querySelector(".counter").innerHTML);
   audioCount.play();
@@ -217,6 +232,7 @@ function startTimer() {
     audioLoc.pause();
     document.getElementById("audioImgLoc").src = "/images/audioOFF.png";
     audioDone.play();
+    luffy.style.visibility = "visible";
   }, duration * 1000);
 }
 

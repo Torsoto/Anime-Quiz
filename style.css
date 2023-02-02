@@ -185,6 +185,17 @@ form {
   visibility: hidden;
 }
 
+#luffy {
+  border-radius: 5%;
+  height: 200px;
+  width: 350px;
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  align-self: flex-end;
+  visibility: hidden;
+}
+
 #startBtn {
   font-size: 35px;
   cursor: pointer;
