@@ -177,6 +177,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
+      if (usedIndexes.length === 1) {
+        document.getElementById("hintBtn").style.visibility = "hidden";
+        failMessage.style.visibility = "hidden";
+        winMessage.style.visibility = "hidden";
+      }
+
       if (!isCorrectAnswer) {
         failMessage.style.visibility = "visible";
         setTimeout(function () {
@@ -220,7 +226,6 @@ function changeImage() {
   } while (usedIndexes.includes(randomIndex));
 
   usedIndexes.push(randomIndex);
-  console.log(usedIndexes);
   // Set the src attribute of the image element to the path at the randomly generated index
   document.getElementById("Img").src = imageArray[randomIndex];
 }
