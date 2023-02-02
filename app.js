@@ -77,6 +77,8 @@ const answerArray = [
   "GTO",
 ];
 
+const searchInput = document.getElementById("location");
+
 const scoreDisplay = document.querySelector(".score");
 const skipBtn = document.getElementById("skipBtn");
 
@@ -91,8 +93,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   locationInput.addEventListener("keypress", function (e) {
     if (e.key === "Enter") {
-      const userAnswer = document.getElementById("location").value;
-      const correctAnswer = answerArray[randomIndex];
+      const userAnswer = document
+        .getElementById("location")
+        .value.toLowerCase();
+      const correctAnswer = answerArray[randomIndex].toLowerCase();
       if (userAnswer.match(correctAnswer)) {
         winMessage.style.visibility = "visible";
         setTimeout(function () {
