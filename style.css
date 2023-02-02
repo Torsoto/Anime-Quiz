@@ -79,7 +79,7 @@ h2 {
 .mainDiv {
   display: grid;
   margin: auto;
-  grid-template-rows: 575px 50px;
+  grid-template-rows: 610px 50px 200px;
 }
 
 .buttonDivSkip {
@@ -93,11 +93,63 @@ h2 {
   grid-row: 2;
 }
 
+.locInstructions {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  height: fit-content;
+  font-size: 26px;
+}
+
+.hintText {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  height: fit-content;
+  font-size: 22px;
+  text-align: center;
+  margin-top: 3.5rem;
+  color: white;
+  font-weight: 550;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.hintBtnDiv {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+}
+
+#hintBtn {
+  visibility: hidden;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 3.5rem;
+  padding: 8px 10px;
+  outline: none;
+  background-color: #27ae60;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 7px #19703d;
+}
+
+#hintBtn:hover {
+  background-color: #2ecc71;
+}
+
+#hintBtn:active {
+  background-color: #2ecc71;
+  box-shadow: 0 5px #19703d;
+  transform: translateY(4px);
+}
+
 #skipBtn {
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 2px;
+  margin-top: 18px;
   padding: 8px 10px;
   outline: none;
   background-color: #27ae60;
@@ -145,7 +197,7 @@ h2 {
   justify-self: center;
   grid-row: 2;
   grid-column: 1;
-  margin-bottom: 47px;
+  margin-bottom: 32px;
   align-self: center;
   visibility: hidden;
 }
@@ -155,7 +207,7 @@ h2 {
   color: #2ecc71;
   grid-column: 1;
   grid-row: 2;
-  margin-bottom: 47px;
+  margin-bottom: 32px;
   align-self: center;
   justify-self: center;
   visibility: hidden;
@@ -171,7 +223,7 @@ h2 {
 }
 
 form {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   text-align: center;
   visibility: hidden;
 }
@@ -186,7 +238,7 @@ form {
 }
 
 #luffy {
-  border-radius: 5%;
+  border-radius: 2.5%;
   height: 200px;
   width: 350px;
   grid-column: 1;
@@ -202,21 +254,21 @@ form {
 }
 
 #location {
-  font-size: 20px;
+  outline: none;
+  border: none;
+  font-size: 18px;
   border-radius: 5px;
+  padding: 5px 10px;
 }
 
 #location::placeholder {
-  color: rgb(0, 0, 0);
   opacity: 50%;
-  font-size: 0.8em;
-  font-style: italic;
 }
 
 #Img {
   grid-row: 1;
   grid-column: 1;
-  margin-top: 4rem;
+  margin-top: 6.5rem;
   justify-self: center;
   height: 500px;
   width: 900px;
