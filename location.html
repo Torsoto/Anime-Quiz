@@ -7,6 +7,7 @@
     <title>Anime-Quiz</title>
     <link rel="short icon" type="images/png" href="images/favicon.png" />
     <link rel="stylesheet" href="style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="app.js"></script>
   </head>
   <body>
@@ -47,7 +48,9 @@
     <div class="mainDiv">
       <div class="timer" data-style="smooth" style="--duration: 300"></div>
       <div class="locInstructions">
-        <p style="text-align: center; font-size: 40px">Instructions:</p>
+        <p id="instruction-p" style="text-align: center; font-size: 40px">
+          Instructions:
+        </p>
         <ul class="list">
           <li>
             Type your guess into the textfield and press Enter to sumbit your
